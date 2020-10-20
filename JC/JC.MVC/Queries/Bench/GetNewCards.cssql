@@ -1,0 +1,8 @@
+﻿@result CreditCard
+
+SELECT
+    @R.Star()
+FROM
+    @R.Tbl()
+WHERE
+    @R.Col(m => m.CreditCardID) > 19237

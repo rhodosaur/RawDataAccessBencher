@@ -1,0 +1,4 @@
+﻿SELECT
+	@R.Star()
+FROM
+	@R.Tbl()

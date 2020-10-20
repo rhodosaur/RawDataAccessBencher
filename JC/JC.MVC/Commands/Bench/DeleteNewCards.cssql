@@ -1,0 +1,3 @@
+﻿@project CreditCard c
+
+DELETE FROM @c.TblName() WHERE @c.ColName(m => m.CreditCardID) > 19237

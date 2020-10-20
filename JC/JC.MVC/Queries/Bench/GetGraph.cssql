@@ -1,0 +1,24 @@
+﻿@result JC.MVC.Views.SalesOrderHeaderView
+
+@{
+    var d = this.R.Open(m => m.Details);
+}
+
+SELECT
+    @R.Star(),
+    @R.Star(m => m.Customer)
+FROM
+    @R.Tbl()
+INNER JOIN
+    @R.Tbl(m => m.Customer) ON @R.Col(m => m.Customer.CustomerID) = @R.Col(m => m.CustomerID)
+WHERE
+    @R.Col(m => m.SalesOrderID) > 50000 AND @R.Col(m => m.SalesOrderID) <= 51000
+
+SELECT
+    @d.Star()
+FROM
+    @d.Tbl()
+INNER JOIN
+    @R.Tbl() ON @R.Col(m => m.SalesOrderID) = @d.Col(m => m.SalesOrderID)
+WHERE
+    @d.Col(m => m.SalesOrderID) > 50000 AND @d.Col(m => m.SalesOrderID) <= 51000
