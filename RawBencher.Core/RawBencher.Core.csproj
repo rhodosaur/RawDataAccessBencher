@@ -23,6 +23,8 @@
         <Link>Benchers\HandCodedBencherUsingGetFieldValue.cs</Link>
       </Compile>
       <Compile Include="..\RawBencher\Benchers\IBencher.cs" Link="Benchers\IBencher.cs" />
+      <Compile Include="..\RawBencher\Benchers\JerrycurlBencher.cs" Link="Benchers\JerrycurlBencher.cs" />
+      <Compile Include="..\RawBencher\Benchers\JerrycurlDataBencher.cs" Link="Benchers\JerrycurlDataBencher.cs" />
       <Compile Include="..\RawBencher\Benchers\LINQ2DBNormalBencher.cs" Link="Benchers\LINQ2DBNormalBencher.cs" />
       <Compile Include="..\RawBencher\Benchers\LLBLGenProNoChangeTrackingBencher.cs" Link="Benchers\LLBLGenProNoChangeTrackingBencher.cs" />
       <Compile Include="..\RawBencher\Benchers\LLBLGenProNoChangeTrackingLinqPocoBencher.cs" Link="Benchers\LLBLGenProNoChangeTrackingLinqPocoBencher.cs" />
@@ -48,6 +50,7 @@
       <ProjectReference Include="..\EFCore\EFCore.Dtos\EFCore.Dtos.csproj" />
       <ProjectReference Include="..\EFCore\Model\EFCore.Bencher.Model.csproj" />
       <ProjectReference Include="..\EFCore\Persistence\EFCore.Bencher.Persistence.csproj" />
+      <ProjectReference Include="..\JC\JC.MVC\JC.MVC.csproj" />
       <ProjectReference Include="..\LINQ2DB\DAL\LINQ2DB.Bencher.csproj" />
       <ProjectReference Include="..\LLBLGenPro\DatabaseGeneric\AdventureWorks.Dal.Adapter.csproj" />
       <ProjectReference Include="..\LLBLGenPro\DatabaseSpecific\AdventureWorks.Dal.AdapterDBSpecific.csproj" />

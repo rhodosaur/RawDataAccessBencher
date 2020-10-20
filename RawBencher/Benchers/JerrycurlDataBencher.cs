@@ -241,7 +241,7 @@ WHERE
         /// <returns>the framework name.</returns>
         protected override string CreateFrameworkNameImpl()
 		{
-            return $"Jerrycurl v{BencherUtils.GetVersion(typeof(Accessor))} (v{BencherUtils.GetInformalVersion(typeof(Accessor))}), Raw SQL";
+            return $"Jerrycurl v{BencherUtils.GetVersion(typeof(Accessor))} (v{BencherUtils.GetVersion(typeof(Accessor))}), Raw SQL";
         }
 
 
