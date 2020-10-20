@@ -39,7 +39,7 @@ namespace RawBencher
 		private const bool ApplyAntiFloodForVMUsage = false; // set to true if your target DB server is hosted on a VM, otherwise set it to false. Used in individual fetch bench.
 
 #if NETCOREAPP
-		private static string ConnectionString = @"data source=ATHENA\SQLEXPRESS2017;initial catalog=AdventureWorks;integrated security=SSPI;persist security info=False;packet size=4096";
+		private static string ConnectionString = @"data source=.;initial catalog=AdventureWorks;integrated security=SSPI;persist security info=False;packet size=4096";
 #else
 		private static string ConnectionString = ConfigurationManager.ConnectionStrings["AdventureWorks.ConnectionString.SQL Server (SqlClient)"].ConnectionString;
 #endif
