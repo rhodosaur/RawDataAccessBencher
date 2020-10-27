@@ -74,8 +74,9 @@ namespace RawBencher
 			RegisteredBenchers.Add(new LLBLGenProResultsetCachingBencher(ConnectionString));
 			RegisteredBenchers.Add(new LLBLGenProNormalBencher(ConnectionString));
 			RegisteredBenchers.Add(new LLBLGenProDTOBencher(ConnectionString));
-			RegisteredBenchers.Add(new JerrycurlBencher());
+			//RegisteredBenchers.Add(new JerrycurlBencher());
 			RegisteredBenchers.Add(new JerrycurlDataBencher());
+			RegisteredBenchers.Add(new JerrycurlDataNewBencherType());
 			RegisteredBenchers.Add(new DapperBencher() { CommandText = SqlSelectCommandText, ConnectionStringToUse = ConnectionString });
 			RegisteredBenchers.Add(new ChainBencher() { CommandText = SqlSelectCommandText, ConnectionStringToUse = ConnectionString });
 			RegisteredBenchers.Add(new OrmLiteBencher() { CommandText = SqlSelectCommandText, ConnectionStringToUse = ConnectionString });

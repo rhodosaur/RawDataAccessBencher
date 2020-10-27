@@ -4,7 +4,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Jerrycurl" Version="1.1.0-pre.49.gc0354c2afc" />
-    <PackageReference Include="Jerrycurl.Vendors.SqlServer" Version="1.1.0-pre.49.gc0354c2afc" />
+    <PackageReference Include="Jerrycurl" Version="1.1.0-pre.57.g17865317e1" />
+    <PackageReference Include="Jerrycurl.Vendors.SqlServer" Version="1.1.0-pre.57.g17865317e1" />
   </ItemGroup>
 </Project>
