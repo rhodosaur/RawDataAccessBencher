@@ -98,7 +98,7 @@ namespace RawBencher.Benchers
         /// <returns>the framework name.</returns>
         protected override string CreateFrameworkNameImpl()
 		{
-            return $"Jerrycurl v{BencherUtils.GetVersion(typeof(Accessor))} (v{BencherUtils.GetVersion(typeof(Accessor))}), MVC/Razor SQL";
+            return $"Jerrycurl v{BencherUtils.GetVersion(typeof(Accessor))} (v1.1.0), Razor SQL";
 
         }
 

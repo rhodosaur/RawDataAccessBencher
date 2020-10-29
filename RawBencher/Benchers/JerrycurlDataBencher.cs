@@ -50,11 +50,12 @@ namespace RawBencher.Benchers
 
             Query query = new Query()
             {
-                QueryText = "SELECT [SalesOrderID] AS [Item.SalesOrderID],[RevisionNumber] AS [Item.RevisionNumber],[OrderDate] AS [Item.OrderDate],[DueDate] AS [Item.DueDate],[ShipDate] AS [Item.ShipDate],[Status] AS [Item.Status],[OnlineOrderFlag] AS [Item.OnlineOrderFlag],[SalesOrderNumber] AS [Item.SalesOrderNumber],[PurchaseOrderNumber] AS [Item.PurchaseOrderNumber],[AccountNumber] AS [Item.AccountNumber],[CustomerID] AS [Item.CustomerID],[SalesPersonID] AS [Item.SalesPersonID],[TerritoryID] AS [Item.TerritoryID],[BillToAddressID] AS [Item.BillToAddressID],[ShipToAddressID] AS [Item.ShipToAddressID],[ShipMethodID] AS [Item.ShipMethodID],[CreditCardID] AS [Item.CreditCardID],[CreditCardApprovalCode] AS [Item.CreditCardApprovalCode],[CurrencyRateID] AS [Item.CurrencyRateID],[SubTotal] AS [Item.SubTotal],[TaxAmt] AS [Item.TaxAmt],[Freight] AS [Item.Freight],[TotalDue] AS [Item.TotalDue],[Comment] AS [Item.Comment],[rowguid] AS [Item.rowguid],[ModifiedDate] AS [Item.ModifiedDate] FROM [Sales].[SalesOrderHeader] WHERE [SalesOrderID] = @P0",
-                Parameters = new IParameter[] { new Parameter("P0", param) },
+                QueryText = "SELECT [SalesOrderID],[RevisionNumber],[OrderDate],[DueDate],[ShipDate],[Status],[OnlineOrderFlag],[SalesOrderNumber],[PurchaseOrderNumber],[AccountNumber],[CustomerID],[SalesPersonID],[TerritoryID],[BillToAddressID],[ShipToAddressID],[ShipMethodID],[CreditCardID],[CreditCardApprovalCode],[CurrencyRateID],[SubTotal],[TaxAmt],[Freight],[TotalDue],[Comment],[rowguid],[ModifiedDate] FROM [Sales].[SalesOrderHeader] WHERE SalesOrderId=@p",
+                Parameters = new IParameter[] { new Parameter("p", param) },
             };
 
-            return this.queries.List<JC.MVC.Database.SalesOrderHeader>(query).SingleOrDefault();
+            return this.queries.Execute<JC.MVC.Database.SalesOrderHeader>(new[] { query }, QueryType.List);
+            //return this.queries.List<JC.MVC.Database.SalesOrderHeader>(query).SingleOrDefault();
         }
         public override IEnumerable<JC.MVC.Database.SalesOrderHeader> FetchSet()
         {
@@ -63,7 +64,7 @@ namespace RawBencher.Benchers
                 QueryText = "SELECT [SalesOrderID] AS [Item.SalesOrderID],[RevisionNumber] AS [Item.RevisionNumber],[OrderDate] AS [Item.OrderDate],[DueDate] AS [Item.DueDate],[ShipDate] AS [Item.ShipDate],[Status] AS [Item.Status],[OnlineOrderFlag] AS [Item.OnlineOrderFlag],[SalesOrderNumber] AS [Item.SalesOrderNumber],[PurchaseOrderNumber] AS [Item.PurchaseOrderNumber],[AccountNumber] AS [Item.AccountNumber],[CustomerID] AS [Item.CustomerID],[SalesPersonID] AS [Item.SalesPersonID],[TerritoryID] AS [Item.TerritoryID],[BillToAddressID] AS [Item.BillToAddressID],[ShipToAddressID] AS [Item.ShipToAddressID],[ShipMethodID] AS [Item.ShipMethodID],[CreditCardID] AS [Item.CreditCardID],[CreditCardApprovalCode] AS [Item.CreditCardApprovalCode],[CurrencyRateID] AS [Item.CurrencyRateID],[SubTotal] AS [Item.SubTotal],[TaxAmt] AS [Item.TaxAmt],[Freight] AS [Item.Freight],[TotalDue] AS [Item.TotalDue],[Comment] AS [Item.Comment],[rowguid] AS [Item.rowguid],[ModifiedDate] AS [Item.ModifiedDate] FROM [Sales].[SalesOrderHeader]",
             };
 
-            return this.queries.List<JC.MVC.Database.SalesOrderHeader>(query);
+            return this.queries.Execute<List<JC.MVC.Database.SalesOrderHeader>>(new[] { query }, QueryType.List);
         }
 
         public override IEnumerable<JC.MVC.Database.SalesOrderHeader> FetchGraph()
@@ -133,7 +134,7 @@ WHERE
     T2.""SalesOrderID"" > 50000 AND T2.""SalesOrderID"" <= 51000"
             };
 
-            return this.queries.List<SalesOrderHeaderView>(query);
+            return this.queries.Execute<List<SalesOrderHeaderView>>(new[] { query }, QueryType.List);
         }
         public override async Task<IEnumerable<JC.MVC.Database.SalesOrderHeader>> FetchGraphAsync()
         {
@@ -202,7 +203,7 @@ WHERE
     T2.""SalesOrderID"" > 50000 AND T2.""SalesOrderID"" <= 51000"
             };
 
-            return await this.queries.ListAsync<SalesOrderHeaderView>(query);
+            return await this.queries.ExecuteAsync<List<SalesOrderHeaderView>>(query, QueryType.List);
         }
 
         public override void VerifyGraphElementChildren(JC.MVC.Database.SalesOrderHeader parent, BenchResult resultContainer)
@@ -241,7 +242,7 @@ WHERE
         /// <returns>the framework name.</returns>
         protected override string CreateFrameworkNameImpl()
 		{
-            return $"Jerrycurl v{BencherUtils.GetVersion(typeof(Accessor))} (v{BencherUtils.GetVersion(typeof(Accessor))}), Raw SQL";
+            return $"Jerrycurl v{BencherUtils.GetVersion(typeof(Accessor))} (v1.1.0), Raw SQL";
         }
 
 
