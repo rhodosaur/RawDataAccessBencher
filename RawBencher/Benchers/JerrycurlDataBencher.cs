@@ -22,7 +22,7 @@ namespace RawBencher.Benchers
         private QueryOptions options = new QueryOptions()
         {
             ConnectionFactory = () => new SqlConnection("data source=.;initial catalog=AdventureWorks;integrated security=SSPI;persist security info=False;packet size=4096"),
-            Schemas = new SchemaStore(new DotNotation())
+            Store = new SchemaStore(new DotNotation())
             {
                 new RelationMetadataBuilder(),
                 new BindingMetadataBuilder(),
@@ -45,7 +45,7 @@ namespace RawBencher.Benchers
 
         public override JC.MVC.Database.SalesOrderHeader FetchIndividual(int key)
         {
-            ISchema schema = this.options.Schemas.GetSchema(typeof(int));
+            ISchema schema = this.options.Store.GetSchema(typeof(int));
             IField param = new Model(schema, key);
 
             Query query = new Query()
@@ -55,7 +55,6 @@ namespace RawBencher.Benchers
             };
 
             return this.queries.Execute<JC.MVC.Database.SalesOrderHeader>(new[] { query }, QueryType.List);
-            //return this.queries.List<JC.MVC.Database.SalesOrderHeader>(query).SingleOrDefault();
         }
         public override IEnumerable<JC.MVC.Database.SalesOrderHeader> FetchSet()
         {
