@@ -1,6 +1,8 @@
-﻿SELECT
+﻿@result SalesOrderHeader
+
+SELECT
 	@R.Star()
 FROM
 	@R.Tbl()
 WHERE
-    @R.Key().Cols() = @M.Par()
+	@R.Col(m => m.SalesOrderID) = @M.Par()

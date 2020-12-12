@@ -22,12 +22,7 @@ namespace RawBencher.Benchers
         private QueryOptions options = new QueryOptions()
         {
             ConnectionFactory = () => new SqlConnection("data source=.;initial catalog=AdventureWorks;integrated security=SSPI;persist security info=False;packet size=4096"),
-            Store = new SchemaStore(new DotNotation())
-            {
-                new RelationMetadataBuilder(),
-                new BindingMetadataBuilder(),
-                new ReferenceMetadataBuilder(),
-            }
+            Store = new SchemaStore(new DotNotation(), new BindingMetadataBuilder(), new ReferenceMetadataBuilder()),
         };
         private QueryEngine queries;
 

@@ -24,6 +24,7 @@
       </Compile>
       <Compile Include="..\RawBencher\Benchers\IBencher.cs" Link="Benchers\IBencher.cs" />
       <Compile Include="..\RawBencher\Benchers\JerrycurlBencher.cs" Link="Benchers\JerrycurlBencher.cs" />
+      <Compile Include="..\RawBencher\Benchers\JerrycurlNoRazorBencher.cs" Link="Benchers\JerrycurlNoRazorBencher.cs" />
       <Compile Include="..\RawBencher\Benchers\JerrycurlDataBencher.cs" Link="Benchers\JerrycurlDataBencher.cs" />
       <Compile Include="..\RawBencher\Benchers\LINQ2DBNormalBencher.cs" Link="Benchers\LINQ2DBNormalBencher.cs" />
       <Compile Include="..\RawBencher\Benchers\LLBLGenProNoChangeTrackingBencher.cs" Link="Benchers\LLBLGenProNoChangeTrackingBencher.cs" />

@@ -58,6 +58,9 @@ namespace RawBencher
 			BenchController.InitConnectionString();
 
 			CacheController.RegisterCache(ConnectionString, new ResultsetCache());
+			RegisteredBenchers.Add(new JerrycurlBencher());
+			RegisteredBenchers.Add(new JerrycurlDataBencher());
+			RegisteredBenchers.Add(new JerrycurlNoRazorBencher());
 			RegisteredBenchers.Add(new HandCodedBencher() { CommandText = SqlSelectCommandText, ConnectionStringToUse = ConnectionString });
 			RegisteredBenchers.Add(new HandCodedBencherUsingGetFieldValue() { CommandText = SqlSelectCommandText, ConnectionStringToUse = ConnectionString });
 			RegisteredBenchers.Add(new RepoDbRawSqlBencher() { ConnectionStringToUse = ConnectionString, CommandText = SqlSelectCommandText });
@@ -74,8 +77,7 @@ namespace RawBencher
 			RegisteredBenchers.Add(new LLBLGenProResultsetCachingBencher(ConnectionString));
 			RegisteredBenchers.Add(new LLBLGenProNormalBencher(ConnectionString));
 			RegisteredBenchers.Add(new LLBLGenProDTOBencher(ConnectionString));
-			RegisteredBenchers.Add(new JerrycurlBencher());
-			RegisteredBenchers.Add(new JerrycurlDataBencher());
+
 			RegisteredBenchers.Add(new DapperBencher() { CommandText = SqlSelectCommandText, ConnectionStringToUse = ConnectionString });
 			RegisteredBenchers.Add(new ChainBencher() { CommandText = SqlSelectCommandText, ConnectionStringToUse = ConnectionString });
 			RegisteredBenchers.Add(new OrmLiteBencher() { CommandText = SqlSelectCommandText, ConnectionStringToUse = ConnectionString });

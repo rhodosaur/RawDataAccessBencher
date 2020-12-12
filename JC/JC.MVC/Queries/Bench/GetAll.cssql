@@ -1,4 +1,6 @@
-﻿SELECT
+﻿@result SalesOrderHeader
+
+SELECT
 	@R.Star()
 FROM
 	@R.Tbl()

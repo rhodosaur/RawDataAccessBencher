@@ -15,11 +15,11 @@ namespace RawBencher.Benchers
 	/// <summary>
 	/// Specific bencher for Dapper , doing no-change tracking fetch
 	/// </summary>
-	public class JerrycurlBencher : BencherBase<JC.MVC.Database.SalesOrderHeader, CreditCard>
+	public class JerrycurlNoRazorBencher : BencherBase<JC.MVC.Database.SalesOrderHeader, CreditCard>
     {
         private readonly BenchAccessor accessor = new BenchAccessor();
 
-        public JerrycurlBencher()
+        public JerrycurlNoRazorBencher()
             : base(e => e.SalesOrderID,
                   l => l.CreditCardID,
                   usesChangeTracking: false,
@@ -31,8 +31,8 @@ namespace RawBencher.Benchers
 
         }
 
-        public override JC.MVC.Database.SalesOrderHeader FetchIndividual(int key) => this.accessor.GetOne(key);
-        public override IEnumerable<JC.MVC.Database.SalesOrderHeader> FetchSet() => this.accessor.GetAll();
+        public override JC.MVC.Database.SalesOrderHeader FetchIndividual(int key) => this.accessor.GetOneSql(key);
+        public override IEnumerable<JC.MVC.Database.SalesOrderHeader> FetchSet() => this.accessor.GetAllSql();
         public override IEnumerable<JC.MVC.Database.SalesOrderHeader> FetchGraph() => this.accessor.GetGraph();
         public override async Task<IEnumerable<JC.MVC.Database.SalesOrderHeader>> FetchGraphAsync() => (await this.accessor.GetGraphAsync());
 
@@ -98,7 +98,7 @@ namespace RawBencher.Benchers
         /// <returns>the framework name.</returns>
         protected override string CreateFrameworkNameImpl()
 		{
-            return $"Jerrycurl v{BencherUtils.GetVersion(typeof(Accessor))} (v1.1.0), Razor SQL";
+            return $"Jerrycurl v{BencherUtils.GetVersion(typeof(Accessor))} (v1.1.0), Razor NoSQL";
 
         }
 

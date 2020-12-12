@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JC.MVC.Accessors;
+using System;
 
 namespace RawBencher.Core
 {
