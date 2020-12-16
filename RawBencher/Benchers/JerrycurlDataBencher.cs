@@ -49,7 +49,7 @@ namespace RawBencher.Benchers
                 Parameters = new IParameter[] { new Parameter("p", param) },
             };
 
-            return this.queries.Execute<JC.MVC.Database.SalesOrderHeader>(new[] { query }, QueryType.List);
+            return this.queries.Execute<JC.MVC.Database.SalesOrderHeader>(query, QueryType.List);
         }
         public override IEnumerable<JC.MVC.Database.SalesOrderHeader> FetchSet()
         {
@@ -58,8 +58,7 @@ namespace RawBencher.Benchers
                 QueryText = "SELECT [SalesOrderID] AS [Item.SalesOrderID],[RevisionNumber] AS [Item.RevisionNumber],[OrderDate] AS [Item.OrderDate],[DueDate] AS [Item.DueDate],[ShipDate] AS [Item.ShipDate],[Status] AS [Item.Status],[OnlineOrderFlag] AS [Item.OnlineOrderFlag],[SalesOrderNumber] AS [Item.SalesOrderNumber],[PurchaseOrderNumber] AS [Item.PurchaseOrderNumber],[AccountNumber] AS [Item.AccountNumber],[CustomerID] AS [Item.CustomerID],[SalesPersonID] AS [Item.SalesPersonID],[TerritoryID] AS [Item.TerritoryID],[BillToAddressID] AS [Item.BillToAddressID],[ShipToAddressID] AS [Item.ShipToAddressID],[ShipMethodID] AS [Item.ShipMethodID],[CreditCardID] AS [Item.CreditCardID],[CreditCardApprovalCode] AS [Item.CreditCardApprovalCode],[CurrencyRateID] AS [Item.CurrencyRateID],[SubTotal] AS [Item.SubTotal],[TaxAmt] AS [Item.TaxAmt],[Freight] AS [Item.Freight],[TotalDue] AS [Item.TotalDue],[Comment] AS [Item.Comment],[rowguid] AS [Item.rowguid],[ModifiedDate] AS [Item.ModifiedDate] FROM [Sales].[SalesOrderHeader]",
             };
 
-            return this.queries.Enumerate<JC.MVC.Database.SalesOrderHeader>(query).ToList();
-            //return this.queries.Execute<List<JC.MVC.Database.SalesOrderHeader>>(new[] { query }, QueryType.List);
+            return this.queries.Execute<List<JC.MVC.Database.SalesOrderHeader>>(query, QueryType.List);
         }
 
         public override IEnumerable<JC.MVC.Database.SalesOrderHeader> FetchGraph()
