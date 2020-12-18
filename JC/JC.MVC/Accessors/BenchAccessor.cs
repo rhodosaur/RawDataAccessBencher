@@ -17,6 +17,9 @@ namespace JC.MVC.Accessors
         public IList<SalesOrderHeaderView> GetGraph() => this.Query<SalesOrderHeaderView>();
         public Task<IList<SalesOrderHeaderView>> GetGraphAsync() => this.QueryAsync<SalesOrderHeaderView>();
 
+        public IList<SalesOrderHeaderView2> GetGraphM2O() => this.Query<SalesOrderHeaderView2>();
+        public Task<IList<SalesOrderHeaderView2>> GetGraphM2OAsync() => this.QueryAsync<SalesOrderHeaderView2>();
+
         public void InsertCards(IEnumerable<CreditCard> newCards, int batchSize)
         {
             this.Execute(newCards, configure: o =>

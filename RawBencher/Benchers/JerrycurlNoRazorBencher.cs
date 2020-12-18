@@ -33,12 +33,12 @@ namespace RawBencher.Benchers
 
         public override JC.MVC.Database.SalesOrderHeader FetchIndividual(int key) => this.accessor.GetOneSql(key);
         public override IEnumerable<JC.MVC.Database.SalesOrderHeader> FetchSet() => this.accessor.GetAllSql();
-        public override IEnumerable<JC.MVC.Database.SalesOrderHeader> FetchGraph() => this.accessor.GetGraph();
-        public override async Task<IEnumerable<JC.MVC.Database.SalesOrderHeader>> FetchGraphAsync() => (await this.accessor.GetGraphAsync());
+        public override IEnumerable<JC.MVC.Database.SalesOrderHeader> FetchGraph() => this.accessor.GetGraphM2O();
+        public override async Task<IEnumerable<JC.MVC.Database.SalesOrderHeader>> FetchGraphAsync() => (await this.accessor.GetGraphM2OAsync());
 
         public override void VerifyGraphElementChildren(JC.MVC.Database.SalesOrderHeader parent, BenchResult resultContainer)
         {
-            SalesOrderHeaderView view = parent as SalesOrderHeaderView;
+            SalesOrderHeaderView2 view = parent as SalesOrderHeaderView2;
 
             if (view == null)
                 return;
@@ -58,7 +58,7 @@ namespace RawBencher.Benchers
 
             resultContainer.IncNumberOfRowsForType(typeof(SalesOrderDetail), amount);
 
-            if ((view.Customer == null) || (view.Customer.CustomerID <= 0))
+            if (!view.Customer.HasValue || view.Customer.Value.CustomerID <= 0)
             {
                 return;
             }

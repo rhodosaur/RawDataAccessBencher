@@ -26,7 +26,7 @@ namespace RawBencher
 	/// </summary>
 	public class BenchController
 	{
-		private const int LoopAmount = 100;
+		private const int LoopAmount = 10;
 		private const int IndividualKeysAmount = 100;
 		private const int InsertSetSize = 1000;			// insert this amount of elements during insert benchmarks.
 		private const int InsertBatchSizeDefault = 100;
