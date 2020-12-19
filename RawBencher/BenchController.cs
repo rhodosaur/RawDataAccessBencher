@@ -58,9 +58,6 @@ namespace RawBencher
 			BenchController.InitConnectionString();
 
 			CacheController.RegisterCache(ConnectionString, new ResultsetCache());
-			RegisteredBenchers.Add(new JerrycurlBencher());
-			RegisteredBenchers.Add(new JerrycurlDataBencher());
-			RegisteredBenchers.Add(new JerrycurlNoRazorBencher());
 			RegisteredBenchers.Add(new HandCodedBencher() { CommandText = SqlSelectCommandText, ConnectionStringToUse = ConnectionString });
 			RegisteredBenchers.Add(new HandCodedBencherUsingGetFieldValue() { CommandText = SqlSelectCommandText, ConnectionStringToUse = ConnectionString });
 			RegisteredBenchers.Add(new RepoDbRawSqlBencher() { ConnectionStringToUse = ConnectionString, CommandText = SqlSelectCommandText });
@@ -83,6 +80,9 @@ namespace RawBencher
 			RegisteredBenchers.Add(new OrmLiteBencher() { CommandText = SqlSelectCommandText, ConnectionStringToUse = ConnectionString });
 			RegisteredBenchers.Add(new DataTableBencher() { CommandText = SqlSelectCommandText, ConnectionStringToUse = ConnectionString });
 			RegisteredBenchers.Add(new ChainCompiledBencher() { CommandText = SqlSelectCommandText, ConnectionStringToUse = ConnectionString });
+			RegisteredBenchers.Add(new JerrycurlBencher());
+			RegisteredBenchers.Add(new JerrycurlDataBencher());
+			RegisteredBenchers.Add(new JerrycurlNoRazorBencher());
 
 #if NETCOREAPP
 			// EF Core 3.x does support netstandard 2.0 but the benchers fail to build on .NET 4.8 so we'll skip them on netfx
